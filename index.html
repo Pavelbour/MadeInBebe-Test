@@ -1,23 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="form.css">
 </head>
 <body>
     <form action="">
-        <label for="cp">Code postal</label>
-        <input type="text" id="cp" name="cp">
-
-        <label for="cities">Commune</label>
-        <select name="cities" id="cities" size="10">
+        <section>
+            <h2>Contactez nous !</h2>
+        </section>
+        <section class="col-2">
             
-        </select>
+                <label for="fn">Prénom</label>
+                <input type="text" id="fn" name="fn">
+        </section>
+
+        <section class="col-2">
+                <label for="ln">Nom</label>
+                <input type="text" id="ln" name="ln">
+        </section>
+
+        <section>
+                <label for="em">E-mail</label>
+                <input type="text" id="em" name="em">
+        </section>
+
+        <section>
+                <label for="address">Adresse</label>
+                <input type="text" id="address" name="address">
+        </section>
+
+        <section class="col-2">
+                <label for="cp">Code postal</label>
+                <input type="number"  required id="cp" name="cp" min="0" max="99999">
+        </section>
+
+        <section class="col-2">
+                <label for="city">Ville</label>
+                <input type="text" list="cities" name="city" id="city" size="10" autocomplete="off">
+
+                <datalist id="cities">
+                    
+                </datalist>
+        </section>
+
+        <section>
+            <label for="message">Votre message</label>
+            <textarea name="message" id="message" cols="30" rows="10"></textarea>
+        </section>
+        <section>
+            <input type="submit" value="Envoyer">
+        <section></section>
     </form>
-    <button id="rq-button">Effectuer la requête.</button>
-    <div id="ecran"></div>
     <script src="ajax.js"></script>
 </body>
 </html>

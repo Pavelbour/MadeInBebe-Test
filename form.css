@@ -1,0 +1,33 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 70%;
+    margin: 30px auto;
+    border: 1px solid lightgrey;
+    border-radius: 20px;
+}
+
+form h2 {
+    text-align: center;
+    margin: 10px auto 20px auto;
+}
+
+section {
+    width: 95%;
+    margin-bottom: 10px;
+}
+
+section label {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+
+.col-2 {
+    width: 45%;
+}
+
+input, textarea {
+    width: 100%;
+}
