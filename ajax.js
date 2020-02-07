@@ -1,14 +1,12 @@
 var cp = document.getElementById('cp');
-var disp = document.getElementById('cities');
-const optionOpenStart = '<option value="';
-const optionOpenFinish = '">';
-const optionClose = '</option>';
+var city = document.getElementById('city');
+var dialog = document.getElementById('dialog');
 cp.addEventListener('input', sendRequest);
 
 function sendRequest() {
     const request = new XMLHttpRequest();
     request.addEventListener('readystatechange', addCitiesNames);
-    request.open('GET', 'https://datanova.laposte.fr/api/records/1.0/search/?dataset=laposte_hexasmal&q=' + cp.value + '&facet=code_commune_insee&facet=nom_de_la_commune&facet=code_postal&facet=libell_d_acheminement&facet=ligne_5');
+    request.open('GET', `https://datanova.laposte.fr/api/records/1.0/search/?dataset=laposte_hexasmal&q=${cp.value}&facet=code_commune_insee&facet=nom_de_la_commune&facet=code_postal&facet=libell_d_acheminement&facet=ligne_5`);
     request.send();
 
 }
@@ -18,10 +16,20 @@ function addCitiesNames(e) {
         var HTML = '';
         var list = JSON.parse(e.currentTarget.responseText);
         list.records.forEach(element => {
-            HTML += optionOpenStart + element.fields.nom_de_la_commune + optionOpenFinish + element.fields.nom_de_la_commune + optionClose;
+            HTML += `<div>${element.fields.nom_de_la_commune}</div>`;
         });
-        disp.innerHTML = HTML;
+        dialog.innerHTML = HTML;
+        propositions = dialog.querySelectorAll('div');
+        propositions.forEach(proposition => {
+            proposition.addEventListener('click', cityChoice);
+        });
+        dialog.style.display = 'block';
     } else {
-        disp.innerHTML = 'Impossible de charger la liste des communes';
+        console.log('Impossible de charger la liste des communes');
     }
+}
+
+function cityChoice(e) {
+    city.value = e.currentTarget.innerHTML;
+    dialog.style.display = 'none';
 }

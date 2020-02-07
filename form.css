@@ -28,6 +28,14 @@ section label {
     width: 45%;
 }
 
+#dialog {
+    display: none;
+}
+
+#dialog div {
+    cursor: pointer;
+}
+
 input, textarea {
     width: 100%;
 }
